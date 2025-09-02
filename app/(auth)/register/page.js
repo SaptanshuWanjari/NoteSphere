@@ -77,7 +77,7 @@ const Page = () => {
     return (
         <>
             <TopNav />
-            <div className='flex justify-center items-center min-h-[calc(100vh-120px)] flex-col relative'>
+            <div className='flex justify-center items-center min-h-[calc(100vh-120px)] flex-col relative px-4 py-6'>
                 {loading && (
                     <div className="fixed inset-0  bg-opacity-80 flex justify-center items-center z-[9999]">
                         <div className="bg-white shadow-lg border border-gray-200 rounded-lg p-6 flex flex-col justify-center items-center min-w-[200px]">
@@ -86,42 +86,46 @@ const Page = () => {
                         </div>
                     </div>
                 )}
-                <div className='w-125 bg-white p-5 flex justify-center items-center flex-col rounded-xl'>
+                <div className='w-full max-w-md sm:max-w-lg bg-white p-6 sm:p-8 flex justify-center items-center flex-col rounded-xl shadow-lg'>
                     <div className='flex items-center justify-center mb-5'>
-                        <LuClipboardPen size={50} color='white' className='bg-black p-2 rounded-xl mr-2' />
-                        <h1 className='text-2xl'>NoteSphere</h1>
+                        <LuClipboardPen size={40} color='white' className='bg-black p-2 rounded-xl mr-2' />
+                        <h1 className='text-xl sm:text-2xl'>NoteSphere</h1>
                     </div>
                     <div className='flex justify-center items-center flex-col mb-5'>
-                        <h1 className='text-3xl '>Sign Up</h1>
-                        <p className='text-gray-400 '>Create your account</p>
+                        <h1 className='text-2xl sm:text-3xl'>Sign Up</h1>
+                        <p className='text-gray-400 text-sm sm:text-base'>Create your account</p>
                     </div>
 
                     <form
                         onSubmit={handleSubmit(handleRegister)}
-                        className='flex flex-col'
+                        className='flex flex-col w-full'
                     >
-                        <div className='flex gap-4'>
+                        <div className='flex flex-col sm:flex-row sm:gap-4'>
 
-                            <input className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md mb-4'
-                                type="text" {...register("username", {
-                                    required: "Username is required",
-                                    maxLength: {
-                                        value: 20,
-                                        message: "Username must be at most 20 characters"
-                                    }
-                                })} placeholder='Username' />
-                            {errors.username && <p className='text-red-500'>{errors.username.message}</p>}
-                            <input className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md mb-4'
-                                type="text" {...register("fullname", {
-                                    required: "Fullname is required",
-                                    maxLength: {
-                                        value: 50,
-                                        message: "Fullname must be at most 50 characters"
-                                    }
-                                })} placeholder='Fullname' />
-                            {errors.fullname && <p className='text-red-500'>{errors.fullname.message}</p>}
+                            <div className='flex-1 mb-4'>
+                                <input className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md w-full text-base'
+                                    type="text" {...register("username", {
+                                        required: "Username is required",
+                                        maxLength: {
+                                            value: 20,
+                                            message: "Username must be at most 20 characters"
+                                        }
+                                    })} placeholder='Username' />
+                                {errors.username && <p className='text-red-500 text-sm mt-1'>{errors.username.message}</p>}
+                            </div>
+                            <div className='flex-1 mb-4'>
+                                <input className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md w-full text-base'
+                                    type="text" {...register("fullname", {
+                                        required: "Fullname is required",
+                                        maxLength: {
+                                            value: 50,
+                                            message: "Fullname must be at most 50 characters"
+                                        }
+                                    })} placeholder='Fullname' />
+                                {errors.fullname && <p className='text-red-500 text-sm mt-1'>{errors.fullname.message}</p>}
+                            </div>
                         </div>
-                        <input className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md mb-4'
+                        <input className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md mb-4 text-base'
                             type="text" {...register("email", {
                                 required: "Email is required",
                                 pattern: {
@@ -129,12 +133,12 @@ const Page = () => {
                                     message: "Email is not valid"
                                 }
                             })} placeholder="Email" />
-                        {errors.email && <p className='text-red-500'>{errors.email.message}</p>}
+                        {errors.email && <p className='text-red-500 text-sm mb-2'>{errors.email.message}</p>}
 
                         <div className='relative mb-4'>
                             <input
                                 type={showPassword ? "text" : "password"}
-                                className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md w-full pr-10'
+                                className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md w-full pr-12 text-base'
                                 placeholder='Password'
                                 {...register("password", {
                                     required: "Password is required",
@@ -162,11 +166,11 @@ const Page = () => {
                                 />
                             )}
                         </div>
-                        {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
+                        {errors.password && <p className='text-red-500 text-sm mb-2'>{errors.password.message}</p>}
 
                         <div className='relative mb-4'>
                             <input
-                                className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md w-full pr-10'
+                                className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md w-full pr-12 text-base'
                                 type={showConfirmPassword ? "text" : "password"}
                                 {...register("confirmPassword", {
                                     required: "Confirm Password is required",
@@ -193,11 +197,11 @@ const Page = () => {
                                 />
                             )}
                         </div>
-                        {errors.confirmPassword && <p className='text-red-500'>{errors.confirmPassword.message}</p>}
+                        {errors.confirmPassword && <p className='text-red-500 text-sm mb-2'>{errors.confirmPassword.message}</p>}
 
                         <div className='flex items-center mb-4 gap-2'>
                             <input type="checkbox" name="checkbox" id="checkbox" />
-                            <label htmlFor="checkbox">I agree to the terms and conditions</label>
+                            <label htmlFor="checkbox" className='text-sm'>I agree to the terms and conditions</label>
                         </div>
 
                         {registrationError && (
@@ -212,12 +216,12 @@ const Page = () => {
                         <div className='flex flex-col gap-4 items-center'>
 
                             <button
-                                className='btn-click w-50 bg-black text-white p-2 rounded-md hover:bg-gray-800 transition
-                            active:translate-y-1 active:scale-95'
+                                className='btn-click w-full sm:w-50 bg-black text-white p-3 rounded-md hover:bg-gray-800 transition
+                            active:translate-y-1 active:scale-95 text-base font-medium'
                                 type="submit">
                                 Register
                             </button>
-                            <p>Already have an account? <Link prefetch={false} href="/login" className='text-blue-500 hover:underline'>Login</Link></p>
+                            <p className='text-sm'>Already have an account? <Link prefetch={false} href="/login" className='text-blue-500 hover:underline'>Login</Link></p>
                         </div>
                     </form>
                 </div>

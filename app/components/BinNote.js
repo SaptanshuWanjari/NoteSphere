@@ -113,14 +113,14 @@ const BinNote = ({
         : '';
 
     return (
-        <div className={`group rounded-xl min-h-[500px] max-h-[700px] p-6 bg-[#f9f9f9] mb-4 relative transition-all duration-300 ease-in-out ${accentClasses} opacity-75`}>
-            <header className='flex justify-between mb-6'>
+        <div className={`group rounded-xl min-h-[400px] sm:min-h-[500px] max-h-[600px] sm:max-h-[700px] p-4 sm:p-6 bg-[#f9f9f9] mb-4 relative transition-all duration-300 ease-in-out ${accentClasses} opacity-75`}>
+            <header className='flex justify-between mb-4 sm:mb-6'>
                 <div className='p-2 border-2 rounded-md w-10 h-10 flex items-center justify-center transition-colors duration-300 ease-in-out'>
                     {icon || <FaCalendar size={20} />}
                 </div>
-                <div className='flex items-center gap-5'>
+                <div className='flex items-center gap-3 sm:gap-5'>
                     {/* Show star but disabled for deleted notes */}
-                    <FaRegStar size={20} className='text-gray-400' title='Cannot favorite deleted notes' />
+                    <FaRegStar size={18} className='text-gray-400' title='Cannot favorite deleted notes' />
                     
                     <div className="relative" ref={dropdownRef}>
                         <HiDotsHorizontal 
@@ -151,19 +151,19 @@ const BinNote = ({
                 </div>
             </header>
             <div className='flex-1 pb-16 overflow-y-auto'>
-                <h1 className='text-3xl font-bold text-black group-hover:text-white transition-colors duration-300 ease-in-out leading-tight mb-4'>{title}</h1>
+                <h1 className='text-xl sm:text-2xl lg:text-3xl font-bold text-black group-hover:text-white transition-colors duration-300 ease-in-out leading-tight mb-3 sm:mb-4'>{title}</h1>
                 <div 
-                    className='note-content text-base text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out leading-relaxed'
+                    className='note-content text-sm sm:text-base text-gray-700 group-hover:text-white transition-colors duration-300 ease-in-out leading-relaxed'
                     dangerouslySetInnerHTML={{ __html: content }}
                 />
             </div>
-            <footer className='mt-5 flex flex-col gap-2 absolute bottom-5 right-10'>
-                <div className='flex items-center space-x-1 text-black group-hover:text-white transition-colors duration-300 ease-in-out text-sm'>
+            <footer className='mt-5 flex flex-col gap-2 absolute bottom-3 sm:bottom-5 right-4 sm:right-10'>
+                <div className='flex items-center space-x-1 text-black group-hover:text-white transition-colors duration-300 ease-in-out text-xs sm:text-sm'>
                     <FaCalendar className='transition-colors duration-300 ease-in-out' />
                     <div className='transition-colors duration-300 ease-in-out'>Created: {displayCreatedDate}</div>
                 </div>
                 {displayDeletedDate && (
-                    <div className='flex items-center space-x-1 text-red-600 group-hover:text-white transition-colors duration-300 ease-in-out text-sm'>
+                    <div className='flex items-center space-x-1 text-red-600 group-hover:text-white transition-colors duration-300 ease-in-out text-xs sm:text-sm'>
                         <FaTrash className='transition-colors duration-300 ease-in-out' />
                         <div className='transition-colors duration-300 ease-in-out'>Deleted: {displayDeletedDate}</div>
                     </div>

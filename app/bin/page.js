@@ -179,27 +179,27 @@ const BinPage = () => {
     <>
       <Topbar heading={"Your deleted notes  "} />
 
-      <div className="rounded-xl bg-white p-8">
-        <div className="flex justify-between items-center mb-6">
+      <div className="rounded-xl bg-white p-4 sm:p-6 lg:p-8 mx-4 sm:mx-6 lg:mx-0">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
           <div>
-            <h1 className='text-3xl font-bold'>Deleted Notes</h1>
-            <p className="text-gray-600 mt-2">
+            <h1 className='text-2xl sm:text-3xl font-bold'>Deleted Notes</h1>
+            <p className="text-gray-600 mt-2 text-sm sm:text-base">
               Notes will be permanently deleted after 30 days
             </p>
           </div>
           
           {deletedNotes.length > 0 && (
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <button
                 onClick={handleRestoreAll}
-                className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors"
+                className="flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors text-sm font-medium"
               >
                 <FaTrashRestore />
                 Restore All
               </button>
               <button
                 onClick={handleEmptyBin}
-                className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
+                className="flex items-center justify-center gap-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors text-sm font-medium"
               >
                 <FaTrash />
                 Empty Bin
@@ -214,7 +214,7 @@ const BinPage = () => {
           </div>
         )}
 
-        <div className='my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
+        <div className='my-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6'>
           {deletedNotes.length > 0 ? (
             deletedNotes.map((note) => {
               // Get the icon component
@@ -240,7 +240,7 @@ const BinPage = () => {
               <div className="text-gray-500 text-lg mb-4">
                 Your bin is empty
               </div>
-              <p className="text-gray-400">
+              <p className="text-gray-400 text-sm sm:text-base">
                 Deleted notes will appear here and can be restored for 30 days
               </p>
             </div>

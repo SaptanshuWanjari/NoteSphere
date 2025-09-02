@@ -71,7 +71,7 @@ const Page = () => {
     return (
         <>
             <TopNav />
-            <div className='flex justify-center items-center min-h-[calc(100vh-120px)] flex-col'>
+            <div className='flex justify-center items-center min-h-[calc(100vh-120px)] flex-col px-4 py-6'>
                 {loading && (
                     <div className="fixed inset-0  bg-opacity-80 flex justify-center items-center z-[9999]">
                         <div className="bg-white shadow-lg border border-gray-200 rounded-lg p-6 flex flex-col justify-center items-center min-w-[200px]">
@@ -80,20 +80,20 @@ const Page = () => {
                         </div>
                     </div>
                 )}
-                <div className='w-125 bg-white p-5 flex justify-center items-center flex-col rounded-xl'>
+                <div className='w-full max-w-md sm:max-w-lg bg-white p-6 sm:p-8 flex justify-center items-center flex-col rounded-xl shadow-lg'>
 
                     <div className='flex items-center justify-center mb-5'>
-                        <LuClipboardPen size={50} color='white' className='bg-black p-2 rounded-xl mr-2' />
-                        <h1 className='text-2xl'>NoteSphere</h1>
+                        <LuClipboardPen size={40} color='white' className='bg-black p-2 rounded-xl mr-2' />
+                        <h1 className='text-xl sm:text-2xl'>NoteSphere</h1>
                     </div>
-                    <h1 className='text-3xl'>Sign In</h1>
-                    <p className='text-center text-gray-500'>Login to stay connected</p>
+                    <h1 className='text-2xl sm:text-3xl'>Sign In</h1>
+                    <p className='text-center text-gray-500 text-sm sm:text-base'>Login to stay connected</p>
                     <form
                         onSubmit={handleSubmit(onSubmit)}
                         className='flex flex-col w-full my-3'
                     >
                         <input
-                            className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md mb-4'
+                            className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md mb-4 text-base'
                             placeholder='Email'
                             {...register("email", {
                                 required: "Email is required",
@@ -108,7 +108,7 @@ const Page = () => {
                         <div className='relative mb-4'>
                             <input
                                 type={showPassword ? "text" : "password"}
-                                className='bg-[#f9fafb] border border-gray-300 p-2 rounded-md w-full pr-10'
+                                className='bg-[#f9fafb] border border-gray-300 p-3 rounded-md w-full pr-12 text-base'
                                 placeholder='Password'
                                 {...register("password", {
                                     required: "Password is required",
@@ -143,24 +143,24 @@ const Page = () => {
                             </div>
                         )}
 
-                        <div className='flex justify-between'>
-                            <div className='flex items-center mb-4'>
+                        <div className='flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 mb-4'>
+                            <div className='flex items-center'>
                                 <input {...register("checkbox")} type="checkbox" className='mr-2 rounded-full' />
-                                <label className='text-gray-700'>Remember me</label>
+                                <label className='text-gray-700 text-sm'>Remember me</label>
                             </div>
-                            <Link prefetch={false} href="/forgot-password" className='text-blue-500 hover:underline'>Forgot Password?</Link>
+                            <Link prefetch={false} href="/forgot-password" className='text-blue-500 hover:underline text-sm'>Forgot Password?</Link>
                         </div>
 
                         <div className='flex flex-col gap-2 mt-2 justify-center items-center'>
                             <button
-                                className='btn-click w-50 bg-black text-white p-2 rounded-md hover:bg-gray-800 transition active:translate-y-1 active:scale-95'
+                                className='btn-click w-full sm:w-50 bg-black text-white p-3 rounded-md hover:bg-gray-800 transition active:translate-y-1 active:scale-95 text-base font-medium'
                                 type="submit"
                                 disabled={isSubmitting}
                             >
                                 Login
                             </button>
                         </div>
-                        <p className='text-center text-gray-500 mt-3'>Don&apos;t have an account? <Link prefetch={false} href="/register" className='text-blue-500 hover:underline'>Sign Up</Link></p>
+                        <p className='text-center text-gray-500 mt-4 text-sm'>Don&apos;t have an account? <Link prefetch={false} href="/register" className='text-blue-500 hover:underline'>Sign Up</Link></p>
                     </form>
                 </div>
             </div>

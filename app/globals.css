@@ -42,6 +42,53 @@
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
+/* Custom responsive utilities for auth pages */
+@media (max-width: 640px) {
+  .auth-container {
+    margin: 0 1rem;
+    width: calc(100% - 2rem);
+  }
+  
+  .auth-form {
+    padding: 1.5rem;
+  }
+  
+  .auth-input {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+  
+  .auth-button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 767px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Improved touch targets for mobile */
+@media (max-width: 768px) {
+  .btn-click {
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+  }
+  
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 body {
   background: var(--subtle);
   color: var(--background);
