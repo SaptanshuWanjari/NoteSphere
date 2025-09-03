@@ -44,23 +44,18 @@ const accentColors = [
 
 // Sample content for demonstration
 const SAMPLE_CONTENT = `
-  <h1>Welcome to Rich Text Editing</h1>
-  <h2>Text Formatting Options</h2>
-  <p>This is a regular paragraph with <strong>bold text</strong>, <em>italic text</em>.</p>
+  <h1>Rich Text Demo</h1>
+  <p>This is a paragraph with <strong>bold text</strong> and <em>italic text</em>.</p>
   
-  <h3>Lists and Organization</h3>
+  <h3>Features</h3>
   <ul>
-    <li>First bullet point with <strong>bold text</strong></li>
-    <li>Second bullet point with <em>italic emphasis</em></li>
+    <li><strong>Formatting</strong> options</li>
+    <li><em>Lists</em> and quotes</li>
+    <li><code>Code snippets</code></li>
   </ul>
   
-  <ol>
-    <li><s>Strikethrough text</s></li>
-    <li><code>code snippet</code></li>
-  </ol>
-  
   <blockquote>
-    <p>This is a blockquote for highlighting important information or quotes from sources.</p>
+    <p>Create beautiful, formatted notes with ease!</p>
   </blockquote>
 `;
 
@@ -182,9 +177,9 @@ const Page = () => {
     <>
       <Topbar heading={"New Note"} />
 
-      <div className='rounded-xl bg-white p-8 grid md:grid-cols-2 gap-8'>
+      <div className='rounded-xl bg-white p-4 sm:p-6 lg:p-8 grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8'>
         <form onSubmit={(e) => e.preventDefault()} className='max-w-xl'>
-          <label className='text-xl mb-2 block text-black' htmlFor="title">Title</label>
+          <label className='text-lg sm:text-xl mb-2 block text-black' htmlFor="title">Title</label>
           <input
             className='new-form-input'
             type="text"
@@ -195,10 +190,10 @@ const Page = () => {
             onChange={(e) => setTitle(e.target.value)}
           />
 
-          <label className='text-xl mb-2 block text-black' htmlFor="description">Description</label>
+          <label className='text-lg sm:text-xl mb-2 block text-black' htmlFor="description">Description</label>
           <div className='mb-4'>
             {/* Custom Toolbar */}
-            <div className='border border-gray-300 rounded-t-md bg-gray-50 p-3 flex gap-2 flex-wrap items-center'>
+            <div className='border border-gray-300 rounded-t-md bg-gray-50 p-2 sm:p-3 flex gap-1 sm:gap-2 flex-wrap items-center overflow-x-auto'>
               
               {/* Heading Select */}
               <select
@@ -217,7 +212,7 @@ const Page = () => {
                   editor?.isActive('heading', { level: 3 }) ? '3' :
                   'paragraph'
                 }
-                className="px-3 py-1 rounded text-sm border border-gray-300 bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors cursor-pointer hover:bg-gray-50"
+                className="px-2 sm:px-3 py-1 rounded text-xs sm:text-sm border border-gray-300 bg-white text-gray-700 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors cursor-pointer hover:bg-gray-50"
               >
                 <option value="paragraph">Paragraph</option>
                 <option value="1">Heading 1</option>
@@ -225,13 +220,13 @@ const Page = () => {
                 <option value="3">Heading 3</option>
               </select>
 
-              <div className="w-px h-6 bg-gray-300"></div>
+              <div className="w-px h-4 sm:h-6 bg-gray-300"></div>
 
               {/* Text Formatting */}
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBold().run()}
-                className={`px-3 py-1 rounded text-sm font-bold transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-bold transition-colors min-w-[32px] sm:min-w-[auto] ${
                   editor?.isActive('bold') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -243,7 +238,7 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleItalic().run()}
-                className={`px-3 py-1 rounded text-sm italic transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm italic transition-colors min-w-[32px] sm:min-w-[auto] ${
                   editor?.isActive('italic') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -255,7 +250,7 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleUnderline?.().run()}
-                className={`px-3 py-1 rounded text-sm underline transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm underline transition-colors min-w-[32px] sm:min-w-[auto] ${
                   editor?.isActive('underline') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -267,7 +262,7 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleStrike().run()}
-                className={`px-3 py-1 rounded text-sm line-through transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm line-through transition-colors min-w-[32px] sm:min-w-[auto] ${
                   editor?.isActive('strike') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
@@ -279,17 +274,18 @@ const Page = () => {
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleCode().run()}
-                className={`px-3 py-1 rounded text-sm font-mono bg-gray-100 transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm font-mono bg-gray-100 transition-colors min-w-[44px] sm:min-w-[auto] ${
                   editor?.isActive('code') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
                 title="Inline Code"
               >
-                &lt;/&gt;
+                <span className="hidden sm:inline">&lt;/&gt;</span>
+                <span className="sm:hidden">&lt;&gt;</span>
               </button>
 
-              <div className="w-px h-6 bg-gray-300"></div>
+              <div className="w-px h-4 sm:h-6 bg-gray-300"></div>
 
               {/* List Select */}
               <select
@@ -314,69 +310,61 @@ const Page = () => {
                   editor?.isActive('orderedList') ? 'numbered' :
                   'none'
                 }
-                className="px-3 py-1 rounded text-sm border border-gray-300 bg-white text-gray-700 focus:ring-2 focus:ring-blue-500"
+                className="px-2 sm:px-3 py-1 rounded text-xs sm:text-sm border border-gray-300 bg-white text-gray-700 focus:ring-2 focus:ring-blue-500"
               >
                 <option value="none">No List</option>
-                <option value="bullet">• Bullet List</option>
-                <option value="numbered">1. Numbered List</option>
+                <option value="bullet">• Bullet</option>
+                <option value="numbered">1. Number</option>
               </select>
 
-              <div className="w-px h-6 bg-gray-300"></div>
+              <div className="w-px h-4 sm:h-6 bg-gray-300"></div>
 
               {/* Block Elements */}
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().toggleBlockquote().run()}
-                className={`px-3 py-1 rounded text-sm transition-colors ${
+                className={`px-2 sm:px-3 py-1 rounded text-xs sm:text-sm transition-colors ${
                   editor?.isActive('blockquote') 
                     ? 'bg-blue-500 text-white' 
                     : 'bg-white text-gray-700 hover:bg-gray-100'
                 }`}
                 title="Quote"
               >
-                &ldquo; Quote
+                <span className="hidden sm:inline">&ldquo; Quote</span>
+                <span className="sm:hidden">&ldquo;</span>
               </button>
-              {/* <button
-                type="button"
-                onClick={() => editor?.chain().focus().toggleCodeBlock().run()}
-                className={`px-3 py-1 rounded text-sm font-mono transition-colors ${
-                  editor?.isActive('codeBlock') 
-                    ? 'bg-blue-500 text-white' 
-                    : 'bg-white text-gray-700 hover:bg-gray-100'
-                }`}
-                title="Code Block"
-              >
-                { } Code
-              </button> */}
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().setHorizontalRule().run()}
-                className="px-3 py-1 rounded text-sm bg-white text-gray-700 hover:bg-gray-100 transition-colors"
+                className="px-2 sm:px-3 py-1 rounded text-xs sm:text-sm bg-white text-gray-700 hover:bg-gray-100 transition-colors"
                 title="Horizontal Line"
               >
-                ―――
+                <span className="hidden sm:inline">―――</span>
+                <span className="sm:hidden">—</span>
               </button>
 
-              <div className="w-px h-6 bg-gray-300"></div>
+              <div className="w-px h-4 sm:h-6 bg-gray-300"></div>
 
               {/* Utility */}
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().undo().run()}
                 disabled={!editor?.can().undo()}
-                className="px-3 py-1 rounded text-sm bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-2 sm:px-3 py-1 rounded text-xs sm:text-sm bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 title="Undo"
               >
-                ↶ Undo
+                <span className="hidden sm:inline">↶ Undo</span>
+                <span className="sm:hidden">↶</span>
               </button>
               <button
                 type="button"
                 onClick={() => editor?.chain().focus().redo().run()}
                 disabled={!editor?.can().redo()}
-                className="px-3 py-1 rounded text-sm bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="px-2 sm:px-3 py-1 rounded text-xs sm:text-sm bg-white text-gray-700 hover:bg-gray-100 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 title="Redo"
               >
-                ↷ Redo
+                <span className="hidden sm:inline">↷ Redo</span>
+                <span className="sm:hidden">↷</span>
               </button>
 
             </div>
@@ -384,12 +372,12 @@ const Page = () => {
             {/* Editor Content */}
             <EditorContent 
               editor={editor} 
-              className="border border-t-0 border-gray-300 rounded-b-md bg-white min-h-[150px] p-3 prose prose-sm max-w-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500"
+              className="border border-t-0 border-gray-300 rounded-b-md bg-white min-h-[120px] sm:min-h-[150px] p-2 sm:p-3 prose prose-sm max-w-none focus-within:ring-2 focus-within:ring-blue-500 focus-within:border-blue-500"
             />
           </div>
 
           <div>
-            <h2 className='text-xl mb-2 block text-black'>Icon</h2>
+            <h2 className='text-lg sm:text-xl mb-2 block text-black'>Icon</h2>
             <div className='mt-2 flex items-center flex-wrap gap-2'>
               {iconOptions.map(({ key, Icon, label }) => (
                 <button
@@ -397,27 +385,27 @@ const Page = () => {
                   key={key}
                   onClick={() => setSelected(key)}
                   aria-pressed={selected === key}
-                  className={`border-1 border-black rounded-md w-12 h-10 p-1 flex items-center justify-center transition duration-150 transform
+                  className={`border-1 border-black rounded-md w-10 h-8 sm:w-12 sm:h-10 p-1 flex items-center justify-center transition duration-150 transform touch-target
                     ${selected === key ?
                       'bg-black text-[#f3f6fd] ring-3  ring-gray-500 -translate-y-0.5' :
                       'bg-transparent hover:bg-[#f3f6fd] hover:-translate-y-0.5'}`}
                   title={label}
                 >
-                  <Icon size={22} className='font-bold'/>
+                  <Icon size={18} className='sm:text-[22px] font-bold'/>
                 </button>
               ))}
             </div>
           </div>
 
           <div className='mb-3 mt-3'>
-            <h2 className='text-xl mb-2 block text-black'>Accent Color</h2>
+            <h2 className='text-lg sm:text-xl mb-2 block text-black'>Accent Color</h2>
             <div className='mt-2 flex items-center flex-wrap gap-2'>
               {accentColors.map((option) => (
                 <button
                   type='button'
                   key={option.name}
                   onClick={() => setSelectedAccent(option.name)}
-                  className={`w-10 h-10 rounded-full border-4 transition-all transform hover:-translate-y-0.5 ${
+                  className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-4 transition-all transform hover:-translate-y-0.5 touch-target ${
                     selectedAccent === option.name
                       ? 'border-gray-800 scale-110 ring-2 ring-gray-400'
                       : 'border-gray-300 hover:border-gray-400'
@@ -439,30 +427,35 @@ const Page = () => {
             </div>
           )}
 
-          <div className='mt-5 flex gap-3'>
-            <button type='button' onClick={resetForm} disabled={isSaving} className='bg-white border hover:bg-black hover:text-white text-black px-3 py-2 rounded-md flex items-center gap-2 text-base transition duration-150 transform hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'>
-              <IoPlayBackOutline size={18} />Reset
+          <div className='mt-4 sm:mt-5 flex flex-col sm:flex-row gap-2 sm:gap-3'>
+            <button type='button' onClick={resetForm} disabled={isSaving} className='bg-white border hover:bg-black hover:text-white text-black px-3 py-2 rounded-md flex items-center justify-center gap-2 text-sm sm:text-base transition duration-150 transform hover:-translate-y-0.5 active:scale-95 focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed touch-target'>
+              <IoPlayBackOutline size={16} className="sm:text-lg" />Reset
             </button>
             <button 
               type='button' 
               onClick={saveNote} 
               disabled={isSaving || !title.trim() || !description.trim()}
-              className='bg-black text-white px-3 py-2 rounded-md flex items-center gap-2 text-base cursor-pointer transition duration-150 transform hover:-translate-y-0.5 active:scale-95 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+              className='bg-black text-white px-3 py-2 rounded-md flex items-center justify-center gap-2 text-sm sm:text-base cursor-pointer transition duration-150 transform hover:-translate-y-0.5 active:scale-95 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed touch-target'
             >
-              <CiSaveDown2 size={18} />
+              <CiSaveDown2 size={16} className="sm:text-lg" />
               {isSaving ? 'Saving...' : 'Save'}
             </button>
           </div>
         </form>
 
-        <div>
-          <Note
-            title={title || 'Sample Title'}
-            content={description || SAMPLE_CONTENT}
-            icon={SelectedIcon ? <SelectedIcon size={20} /> : null}
-            accent={selectedAccent}
-            star={false}
-          />
+        <div className="order-last">
+          <div className="lg:sticky lg:top-4">
+            <h3 className="text-lg sm:text-xl font-semibold text-black mb-3 lg:mb-4">Preview</h3>
+            <div className="transform scale-90 sm:scale-95 lg:scale-100 origin-top">
+              <Note
+                title={title || 'Sample Title'}
+                content={description || SAMPLE_CONTENT}
+                icon={SelectedIcon ? <SelectedIcon size={20} /> : null}
+                accent={selectedAccent}
+                star={false}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

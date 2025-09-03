@@ -1,19 +1,29 @@
 "use client";
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { CiSearch } from 'react-icons/ci'
 import { GrNotes } from 'react-icons/gr'
 import { FaPlus } from 'react-icons/fa'
 import { FaTrash } from 'react-icons/fa'
 import { LuClipboardPen } from 'react-icons/lu'
-import { FiLogOut } from 'react-icons/fi'
-import { AiFillHome } from 'react-icons/ai'
 import { signOut, useSession } from 'next-auth/react'
 import { useSearch } from '../contexts/SearchContext'
+import { CgProfile } from 'react-icons/cg'
+import { CgLogOut } from 'react-icons/cg';
+import {
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 
 const Navbar = () => {
     const { data: session } = useSession();
     const { searchQuery, updateSearchQuery, clearSearch } = useSearch();
+    const router = useRouter();
+    const [selectValue, setSelectValue] = useState("");
 
     const handleSignOut = () => {
         signOut({
@@ -29,6 +39,21 @@ const Navbar = () => {
         clearSearch();
     };
 
+    const handleSelectChange = (value) => {
+        switch (value) {
+            case 'profile':
+                router.push('/profile');
+                break;
+            case 'logout':
+                handleSignOut();
+                break;
+            default:
+                break;
+        }
+        // Reset the select value after action
+        setTimeout(() => setSelectValue(""), 100);
+    };
+
     return (
         <div>
             <nav className='bg-white p-4 md:p-5 rounded-2xl flex flex-col md:fixed md:h-screen md:w-72 md:items-center overflow-y-auto'>
@@ -40,9 +65,26 @@ const Navbar = () => {
                 </div>
 
                 {session && (
-                    <div className='w-full mb-4 p-3 bg-gray-50 rounded-lg'>
-                        <p className='text-lg text-gray-600'>Welcome back,</p>
-                        <h1 className='text-2xl md:text-3xl font-semibold truncate'>{session.user?.name || session.user?.email}</h1>
+                    <div className='flex space-x-4 items-center w-full mb-4 p-3 bg-gray-50 rounded-lg'>
+                        <div className=''>
+                            <h1 className='text-2xl md:text-3xl font-semibold '>Welcome Back</h1>
+                            <Select value={selectValue} onValueChange={handleSelectChange} className="flex-1 shadow-md">
+                                <SelectTrigger className="border-none cursor-pointer ">
+                                    <h1 className='text-2xl md:text-3xl font-semibold truncate'>{session.user?.name || session.user?.email}</h1>
+                                </SelectTrigger>
+                                <SelectContent className="w-full">
+                                    <SelectItem value="profile" className="w-57 px-4 py-2 text-md cursor-pointer flex items-center gap-2 ">
+                                        <CgProfile size={20} />
+                                        <span>Profile</span>
+                                    </SelectItem>
+                                    <hr />
+                                    <SelectItem value="logout" className="w-57 px-4 py-2 text-md cursor-pointer flex items-center gap-2">
+                                        <CgLogOut size={20} />
+                                        <span>Logout</span>
+                                    </SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
                     </div>
                 )}
 
@@ -81,7 +123,7 @@ const Navbar = () => {
                         <FaTrash />
                         <span className='p-1'>Bin</span>
                     </Link>
-                    
+
                 </div>
 
             </nav>

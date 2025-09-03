@@ -17,9 +17,9 @@ const Topbar = ({ heading }) => {
     return (
         <div className='flex items-center justify-between gap-3'>
             <div className='flex-1 h-20 bg-white p-3 rounded-xl flex items-center gap-2 mb-8'>
-                <h1 className='text-gray-700'>{heading}</h1>
+                <h1 className='text-gray-700 text-xl'>{heading}</h1>
             </div>
-            <div className='flex items-center gap-2 mb-8'>
+            {/* <div className='flex items-center gap-2 mb-8'>
                 {session && (
                     <Link href='/' className='btn-click flex items-center h-20 text-white bg-blue-500 hover:bg-blue-600 transition-colors w-20 justify-center rounded-2xl'>
                         <AiFillHome size={24} />
@@ -35,6 +35,10 @@ const Topbar = ({ heading }) => {
                         <FiLogOut size={24} color="white" />
                     </button>
                 )}
+            </div> */}
+
+            <div>
+                
             </div>
         </div>
     )
