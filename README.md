@@ -18,15 +18,6 @@ A modern, full-stack note-taking app built with Next.js, MongoDB, and ShadCN UI.
 
 ---
 
-## 🖼️ Screenshots
-
-<!-- Add your screenshots here -->
-
-![NoteSphere Home](https://user-images.githubusercontent.com/yourusername/notesphere-home.png)
-![NoteSphere Editor](https://user-images.githubusercontent.com/yourusername/notesphere-editor.png)
-![NoteSphere Mobile](https://user-images.githubusercontent.com/yourusername/notesphere-mobile.png)
-
----
 
 ## 🛠️ Tech Stack
 
