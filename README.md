@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📝 NoteSphere
 
-## Getting Started
+A modern, full-stack note-taking app built with Next.js, MongoDB, and ShadCN UI. Organize your thoughts, tasks, and ideas with a beautiful, responsive interface.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- **User Authentication**: Secure login & registration with NextAuth
+- **Rich Text Editor**: Format notes with headings, lists, code, and more
+- **Mobile-First Design**: Fully responsive for phones, tablets, and desktops
+- **Note Management**: Create, edit, archive, delete, and restore notes
+- **Bin/Trash**: Recover deleted notes from the bin
+- **Quick Search**: Instantly find notes by title or content
+- **Profile Dashboard**: View stats, export notes, and delete account
+- **Accent Colors & Icons**: Personalize notes with colors and icons
+- **Fast & Modern UI**: Built with ShadCN UI and Tailwind CSS
+
+---
+
+## 🖼️ Screenshots
+
+<!-- Add your screenshots here -->
+
+![NoteSphere Home](https://user-images.githubusercontent.com/yourusername/notesphere-home.png)
+![NoteSphere Editor](https://user-images.githubusercontent.com/yourusername/notesphere-editor.png)
+![NoteSphere Mobile](https://user-images.githubusercontent.com/yourusername/notesphere-mobile.png)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js 15, React, ShadCN UI, Tailwind CSS
+- **Backend**: Next.js API routes, MongoDB, Mongoose
+- **Auth**: NextAuth.js
+- **Icons**: React Icons
+
+---
+
+## 📦 Installation
 
 ```bash
+# Clone the repo
+git clone https://github.com/SaptanshuWanjari/NoteSphere.git
+cd NoteSphere
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+cp .env.example .env.local
+# Fill in your MongoDB URI and NextAuth secret
+
+# Start the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Register or log in to your account
+- Create, edit, and organize notes
+- Use the bin to recover deleted notes
+- Export all notes from your profile
+- Delete your account and all data from profile
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 📄 License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+MIT
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 💡 Credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [Next.js](https://nextjs.org/)
+- [ShadCN UI](https://ui.shadcn.com/)
+- [MongoDB](https://www.mongodb.com/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [React Icons](https://react-icons.github.io/react-icons/)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
